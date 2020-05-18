@@ -27,9 +27,6 @@ class Post extends Component {
     const image = article.image;
     const caption = article.title + " " + article.snippet;
     const topic = article.topic_text;
-    const topic_num = article.topic;
-    const doc_id = article.doc_id;
-    const date = article.date;
 
     return <article className="Post" ref="Post">
       <header>
@@ -50,7 +47,8 @@ class Post extends Component {
         </div>
       </a>
       <div className="Post-caption">
-        <strong>Topic: </strong> {topic}
+        Topic: 
+        <a href={`/?t=${article.topic_num}`}>{topic}</a>
       </div>
       <div className="Post-caption">
         <strong>{nickname} </strong>{caption}

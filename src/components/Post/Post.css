@@ -4,8 +4,9 @@
   border: 1px solid #e6e6e6;
   background-color: #fff;
   margin-bottom: 60px;
-  margin-left : 20%;
-  margin-right: 20%;
+  margin-left : 10%;
+  margin-right: 10%;
+  max-width: 620px;
 }
 .Post-user {
   display: flex;
@@ -43,7 +44,6 @@
   font-family: 'PT Sans', sans-serif;
   font-weight: bold;
 }
-
 .vjs-fade-out {
   display: none;
   visibility: hidden;
