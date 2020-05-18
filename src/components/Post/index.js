@@ -23,31 +23,32 @@ class Post extends Component {
   render() {
     const article = this.props.article;
     const nickname = article.who;
-    const avatar = "https://"+article.who+"/favicon.ico";
+    const avatar = "https://" + article.who + "/favicon.ico";
     const image = article.image;
     const caption = article.title + " " + article.snippet;
     const topic = article.topic_text;
     const topic_num = article.topic;
     const doc_id = article.doc_id;
     const date = article.date;
-    const topic_link =  'https://';
 
     return <article className="Post" ref="Post">
       <header>
         <div className="Post-user">
           <div className="Post-user-avatar">
-            <a href={article.url}><img src={avatar} alt={nickname} /></a>
+            <img src={avatar} alt={nickname} />
           </div>
           <div className="Post-user-nickname">
-            <span>{nickname}</span>
+            <span>{article.who}</span>
           </div>
         </div>
       </header>
-      <div className="Post-image">
-        <div className="Post-image-bg">
-          <img alt={caption} src={image} />
+      <a href={article.url}>
+        <div className="Post-image">
+          <div className="Post-image-bg">
+            <img alt={caption} src={image} />
+          </div>
         </div>
-      </div>
+      </a>
       <div className="Post-caption">
         <strong>Topic: </strong> {topic}
       </div>
@@ -59,4 +60,3 @@ class Post extends Component {
 }
 
 export default Post;
-
