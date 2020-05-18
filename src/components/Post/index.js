@@ -28,6 +28,8 @@ class Post extends Component {
     const caption = article.title + " " + article.snippet;
     const topic = article.topic_text;
 
+    console.log(article);
+
     return <article className="Post" ref="Post">
       <header>
         <div className="Post-user">
@@ -35,7 +37,7 @@ class Post extends Component {
             <img src={avatar} alt={nickname} />
           </div>
           <div className="Post-user-nickname">
-            <span>{article.who}</span>
+          <a href={`/?w=${article.who}`}><span>{article.who}</span></a>
           </div>
         </div>
       </header>
@@ -48,7 +50,7 @@ class Post extends Component {
       </a>
       <div className="Post-caption">
         Topic: 
-        <a href={`/?t=${article.topic_num}`}>{topic}</a>
+        <a href={`/articles?t=${article.topic_num}`}>{topic}</a>
       </div>
       <div className="Post-caption">
         <strong>{nickname} </strong>{caption}

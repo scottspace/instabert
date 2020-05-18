@@ -6,7 +6,7 @@ const Feed = ({ articles }) => {
   return (
     <div>
       {articles.map((article) => (
-        <Post article={article}  />
+        <Post article={article} />
       ))}
     </div>
   )
