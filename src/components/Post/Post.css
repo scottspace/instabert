@@ -34,8 +34,18 @@
   width: 100%;
 }
 .Post-caption {
-  padding: 16px 16px;
+  padding: 8px;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1;
 }
+.Post-caption {
+  padding: 8px;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1;
+}
+
 .Post-caption strong {
   font-family: 'PT Sans', sans-serif;
   font-weight: bold;

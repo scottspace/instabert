@@ -30,12 +30,13 @@ class Post extends Component {
     const topic_num = article.topic;
     const doc_id = article.doc_id;
     const date = article.date;
+    const topic_link =  'https://'
 
     return <article className="Post" ref="Post">
       <header>
         <div className="Post-user">
           <div className="Post-user-avatar">
-            <img src={avatar} alt={nickname} />
+            <a href={article.url}><img src={avatar} alt={nickname} /></a>
           </div>
           <div className="Post-user-nickname">
             <span>{nickname}</span>
@@ -46,6 +47,9 @@ class Post extends Component {
         <div className="Post-image-bg">
           <img alt={caption} src={image} />
         </div>
+      </div>
+      <div className='Post-topic'>
+        <strong>Topic: </strong> {topic_text}
       </div>
       <div className="Post-caption">
         <strong>{nickname} </strong>{caption}
