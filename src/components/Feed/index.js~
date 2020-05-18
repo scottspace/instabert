@@ -1,0 +1,15 @@
+// src/components/contacts.js
+import React from 'react';
+import Post from '../components/Post';
+
+const Feed = ({ articles }) => {
+ return (
+   <div>
+     {articles.map((article) => (
+	     <Post nickname={article.who} avatar="" caption={article.title} image={article.image} />
+     ))}
+   </div>
+ )
+};
+
+export default Feed;
