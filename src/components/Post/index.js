@@ -30,7 +30,7 @@ class Post extends Component {
     const topic_num = article.topic;
     const doc_id = article.doc_id;
     const date = article.date;
-    const topic_link =  'https://'
+    const topic_link =  'https://';
 
     return <article className="Post" ref="Post">
       <header>
@@ -48,8 +48,8 @@ class Post extends Component {
           <img alt={caption} src={image} />
         </div>
       </div>
-      <div className='Post-topic'>
-        <strong>Topic: </strong> {topic_text}
+      <div className="Post-caption">
+        <strong>Topic: </strong> {topic}
       </div>
       <div className="Post-caption">
         <strong>{nickname} </strong>{caption}
