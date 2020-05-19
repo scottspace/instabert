@@ -48,9 +48,8 @@ class Post extends Component {
           </div>
         </div>
       </a>
-      <div className="Post-caption">
-        Topic: 
-        <a href={`/articles?t=${article.topic_num}`}>{topic}</a>
+      <div className="Post-topic">
+        From "<a href={`/articles?t=${article.topic}`}>{topic}</a>""
       </div>
       <div className="Post-caption">
         <strong>{nickname} </strong>{caption}

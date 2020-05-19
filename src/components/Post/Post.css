@@ -1,5 +1,9 @@
 /* src/components/Post/Post.css */
-.Post {
+a, a:visited {
+  color: #00376b;
+  color: rgba(var(--fe0,0,55,107),1);
+  text-decoration: none;
+}.Post {
   border-radius: 3px;
   border: 1px solid #e6e6e6;
   background-color: #fff;
@@ -35,6 +39,14 @@
   width: 100%;
 }
 .Post-caption {
+  padding-top: 16px;
+  padding-left: 8px;
+  padding-bottom: 16px;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1;
+}
+.Post-caption {
   padding: 8px;
   font-family: Roboto,Helvetica,Arial,sans-serif;
   font-size: 14px;
@@ -48,4 +60,35 @@
   display: none;
   visibility: hidden;
   opacity: 0;
+}
+
+img { 
+  min-height: 50px;
+}
+
+img:before { 
+  content: " ";
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  height: calc(100% + 10px);
+  width: 100%;
+  background-color: rgb(230, 230, 230);
+  border: 2px dotted rgb(200, 200, 200);
+  border-radius: 5px;
+}
+
+img:after { 
+  content: "\f127" " Broken Image of " attr(alt);
+  display: block;
+  font-size: 16px;
+  font-style: normal;
+  font-family: FontAwesome;
+  color: rgb(100, 100, 100);
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  text-align: center;
 }
