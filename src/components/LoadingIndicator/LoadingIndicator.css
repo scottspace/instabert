@@ -1,0 +1,11 @@
+/* src/components/Header/Header.css */
+
+.loader {
+    width: 100%;
+    height: 100px;
+    display: 'flex';
+    text-align: center;
+    vertical-align: center;
+    justifyContent: 'center';
+    alignItems: 'center';
+}

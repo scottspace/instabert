@@ -17,9 +17,7 @@ import "./Post.css";
 
 import React, { Component } from "react";
 class Post extends Component {
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     const article = this.props.article;
     const nickname = article.who;
@@ -35,7 +33,7 @@ class Post extends Component {
             <img src={avatar} alt={nickname} />
           </div>
           <div className="Post-user-nickname">
-          <a href={`/articles?w=${article.who}`}><span>{article.who}</span></a>
+          <a href={`/?w=${article.who}`}><span>{article.who}</span></a>
           </div>
         </div>
       </header>
@@ -47,7 +45,7 @@ class Post extends Component {
         </div>
       </a>
       <div className="Post-topic">
-        From <a href={`/articles?t=${article.topic}`}>"{topic}"</a>
+        From <a href={`/?t=${article.topic}`}>"{topic}"</a>
       </div>
       <div className="Post-caption">
         <strong>{nickname} </strong>{caption}
