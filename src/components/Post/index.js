@@ -25,6 +25,9 @@ class Post extends Component {
     const image = article.image;
     const caption = article.title + " " + article.snippet;
     const topic = article.topic_text;
+    const emo = 3+min(max(-3,article.z),3);
+    const emote = '😭😢🙁😶🙂😍🥳';
+    var smiley = emote.substring(emo,emo);
 
     return <article className="Post" ref="Post">
       <header>
@@ -32,6 +35,7 @@ class Post extends Component {
           <div className="Post-user-avatar">
             <img src={avatar} alt={nickname} />
           </div>
+          <div className="Post-senticon">{smiley}</div>
           <div className="Post-user-nickname">
           <a href={`/?w=${article.who}`}><span>{article.who}</span></a>
           </div>

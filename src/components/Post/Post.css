@@ -34,6 +34,12 @@ a, a:visited {
   font-family: 'PT Sans', sans-serif;
   font-weight: bold;
 }
+.Post-senticon {
+  margin-top: 12px;
+  margin-right: 12px;
+  float: right;
+  font-size: 18px;
+}
 .Post-image-bg {
   background-color: #efefef;
 }
