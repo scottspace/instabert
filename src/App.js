@@ -15,7 +15,6 @@ class App extends Component {
 
   render() {
     return <div className="App">
-      <Header />
       <section className="App-main">
         <Router>
           <Route exact path={"/"} component={Feed} />
@@ -24,7 +23,6 @@ class App extends Component {
       </section>
     </div>;
   };
-
 }
 
 export default App;
