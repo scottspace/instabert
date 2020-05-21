@@ -53,12 +53,12 @@ class HeatMap extends Component {
           fetch(url)
             .then(res => res.json())
             .then((data) => {
-                for (var i=0; i < length(data); i++) {
+                for (var i=0; i < data.length; i++) {
                     var article = data[i].z;
                     var weight = article.z;
                     var lat = article.lat;
                     var lng = article.lng;
-                    weight = 3*(36-(3+Math.min(3,Math.max(-3,z))**2));
+                    weight = 3*(36-(3+Math.min(3,Math.max(-3,weight))**2));
                     this.setState({
                         heatmapPoints: [...this.state.heatmapPoints, 
                             { lat, lng, weight }]
