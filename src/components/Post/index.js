@@ -22,7 +22,7 @@ class Post extends Component {
   render() {
     const article = this.props.article;
     const nickname = article.who;
-    const avatar = "https://" + article.who + "/favicon.ico";
+    const avatar = article.favicon;
     const image = article.image;
     const caption = article.title + " " + article.snippet;
     const topic = article.topic_text;

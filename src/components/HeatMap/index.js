@@ -29,7 +29,7 @@ class HeatMap extends Component {
 
     static defaultProps = {
         center: {
-            lat: 38.08
+            lat: 38.08,
             lng: -119.75
         },
         zoom: 5
