@@ -4,7 +4,6 @@ a, a:visited {
   color: rgba(var(--fe0,0,55,107),1);
   text-decoration: none;
 }
-
 .Post {
   border-radius: 3px;
   border: 1px solid #e6e6e6;

@@ -27,13 +27,13 @@ class Post extends Component {
     const topic = article.topic_text;
     const emo = 3+Math.min(Math.max(-3,article.z),3);
     //'😭😢🙁😶🙂😍🥳';
-    const emote = ['&#x1F60D', 
-                   '&#x1F600',
-                   '&#x1F642',
-                   '&#x1F601',
-                   '&#x1F641',
-                   '&#x1F622',
-                   '&#x1F621'];
+    const emote = ['1F60D', 
+                   '1F600',
+                   '1F642',
+                   '1F601',
+                   '1F641',
+                   '1F622',
+                   '1F621'];
     var smiley = emote[emo];
 
     return <article className="Post" ref="Post">
@@ -42,7 +42,7 @@ class Post extends Component {
           <div className="Post-user-avatar">
             <img src={avatar} alt={nickname} />
           </div>
-          <div className="Post-senticon">{smiley}</div>
+          <div className="Post-senticon">&#x{smiley}</div>
           <div className="Post-user-nickname">
           <a href={`/?w=${article.who}`}><span>{article.who}</span></a>
           </div>
