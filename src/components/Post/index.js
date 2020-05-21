@@ -1,4 +1,5 @@
 import "./Post.css";
+import Emojis from 'react-emoji-component';
 
 /**
  * {"date":"0",
@@ -26,15 +27,8 @@ class Post extends Component {
     const caption = article.title + " " + article.snippet;
     const topic = article.topic_text;
     const emo = 3+Math.min(Math.max(-3,article.z),3);
-    //'😭😢🙁😶🙂😍🥳';
-    const emote = ['1F60D', 
-                   '1F600',
-                   '1F642',
-                   '1F601',
-                   '1F641',
-                   '1F622',
-                   '1F621'];
-    var smiley = emote[emo];
+    const emote = ['😭','🙁','😶','🙂','😍','🥳'];
+    var smiley = emote[emo]; 
 
     return <article className="Post" ref="Post">
       <header>
@@ -42,7 +36,7 @@ class Post extends Component {
           <div className="Post-user-avatar">
             <img src={avatar} alt={nickname} />
           </div>
-          <div className="Post-senticon">&#x{smiley}</div>
+          <div className="Post-senticon"><Emojis size={24}>{smiley}</Emojis></div>
           <div className="Post-user-nickname">
           <a href={`/?w=${article.who}`}><span>{article.who}</span></a>
           </div>

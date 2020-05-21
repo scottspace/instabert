@@ -22,7 +22,6 @@ def hello_world(request):
         Response object using
         `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.
     """
-    request_json = request.get_json()
     if request.args and 't' in request.args:
         response = flask.jsonify(get_topic(request.args.get('t')))
     elif request.args and 'w' in request.args:
