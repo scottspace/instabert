@@ -26,10 +26,10 @@ function createMapOptions(maps) {
 class HeatMap extends Component {
     static defaultProps = {
         center: {
-            lat: 39.33,
-            lng: -120.18
+            lat: 38.08
+            lng: -119.75
         },
-        zoom: 8
+        zoom: 6
     }
 
     constructor(props) {
