@@ -54,7 +54,7 @@ class HeatMap extends Component {
             .then(res => res.json())
             .then((data) => {
                 for (var i=0; i < data.length; i++) {
-                    var article = data[i].z;
+                    var article = data[i];
                     var weight = article.z;
                     var lat = article.lat;
                     var lng = article.lng;
