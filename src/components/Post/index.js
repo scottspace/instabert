@@ -26,8 +26,15 @@ class Post extends Component {
     const caption = article.title + " " + article.snippet;
     const topic = article.topic_text;
     const emo = 3+Math.min(Math.max(-3,article.z),3);
-    const emote = '😭😢🙁😶🙂😍🥳';
-    var smiley = emote.substring(emo,emo+1);
+    //'😭😢🙁😶🙂😍🥳';
+    const emote = ['&#x1F60D', 
+                   '&#x1F600',
+                   '&#x1F642',
+                   '&#x1F601',
+                   '&#x1F641',
+                   '&#x1F622',
+                   '&#x1F621'];
+    var smiley = emote[emo];
 
     return <article className="Post" ref="Post">
       <header>
