@@ -29,7 +29,7 @@ warnings.filterwarnings('ignore')
 if len(sys.argv) > 1:
     a = sys.argv
     a.pop(0) # skip command name
-    city_name = ' '.join(sys.argv[1:])
+    city_name = ' '.join(a)
 else:
     city_name = 'San Francisco'
 print("Creating news cluster for "+city_name)
@@ -38,7 +38,6 @@ print("Creating news cluster for "+city_name)
 project_id = 'octo-news'
 no_topics = 32  # number of sentence topics of LDA
 C = 16 # Number of sentence clusters of [LDA,Bert]
-city_name = "San Francisco"
 no_features = 256
 
 # Bert
