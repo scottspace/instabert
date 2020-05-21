@@ -1,4 +1,7 @@
 # !pip -q install nltk requests
+#
+# TODO please clean me up, OO me. This is raw notebook sludge.
+#
 import requests
 import os
 import random
@@ -22,6 +25,14 @@ from keras.models import Model
 from sklearn.model_selection import train_test_split
 import warnings
 warnings.filterwarnings('ignore')
+
+if len(sys.argv) > 1:
+    a = sys.argv
+    a.pop(0) # skip command name
+    city_name = ' '.join(sys.argv[1:])
+else:
+    city_name = 'San Francisco'
+print("Creating news cluster for "+city_name)
 
 # hyperparameters
 project_id = 'octo-news'
