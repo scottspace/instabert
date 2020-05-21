@@ -4,13 +4,32 @@ import GoogleMapReact from 'google-map-react'
 
 import './HeatMap.css'
 
+function createMapOptions(maps) {
+    // next props are exposed at maps
+    // "Animation", "ControlPosition", "MapTypeControlStyle", "MapTypeId",
+    // "NavigationControlStyle", "ScaleControlStyle", "StrokePosition", "SymbolPath", "ZoomControlStyle",
+    // "DirectionsStatus", "DirectionsTravelMode", "DirectionsUnitSystem", "DistanceMatrixStatus",
+    // "DistanceMatrixElementStatus", "ElevationStatus", "GeocoderLocationType", "GeocoderStatus", "KmlLayerStatus",
+    // "MaxZoomStatus", "StreetViewStatus", "TransitMode", "TransitRoutePreference", "TravelMode", "UnitSystem"
+    return {
+      zoomControlOptions: {
+        position: maps.ControlPosition.RIGHT_CENTER,
+        style: maps.ZoomControlStyle.SMALL
+      },
+      mapTypeControlOptions: {
+        position: maps.ControlPosition.TOP_RIGHT
+      },
+      mapTypeControl: true
+    };
+  }
+
 class HeatMap extends Component {
     static defaultProps = {
         center: {
             lat: 39.33,
             lng: -120.18
         },
-        zoom: 11
+        zoom: 4
     }
 
     constructor(props) {
@@ -28,6 +47,7 @@ class HeatMap extends Component {
         if (!this.state.heatmapVisible) {
             return
         }
+        console.log("You clicked lat=",lat," lng=",lng);
 
         this.setState({
             heatmapPoints: [...this.state.heatmapPoints, { lat, lng }]
@@ -72,6 +92,7 @@ class HeatMap extends Component {
                     defaultZoom={this.props.zoom}
                     heatmapLibrary={true}
                     heatmap={heatMapData}
+                    options={createMapOptions}
                     onClick={this.onMapClick.bind(this)}
                 >
                 </GoogleMapReact>
