@@ -12,7 +12,6 @@ class Feed extends Component {
   };
 
   componentDidMount() {
-    console.log("Feed mounted", this.props);
     var q = this.props.location.search;
     var url = 'https://us-central1-octo-news.cloudfunctions.net/articles';
     if (q.length > 0) {

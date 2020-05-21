@@ -29,14 +29,14 @@ a, a:visited {
   border-radius: 50%;
 }
 .Post-user-nickname {
-  margin-left: 12px;
+  margin-left: 32px;
   font-family: 'PT Sans', sans-serif;
   font-weight: bold;
 }
 .Post-senticon {
   font-size: 18px;
   position: absolute;
-  padding-left: 70%;
+  padding-left: 35px;
 }
 .Post-image-bg {
   background-color: #efefef;
