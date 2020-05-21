@@ -29,7 +29,7 @@ class HeatMap extends Component {
             lat: 38.08
             lng: -119.75
         },
-        zoom: 6
+        zoom: 5
     }
 
     constructor(props) {
