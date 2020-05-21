@@ -18,8 +18,8 @@ class HeatMap extends Component {
         this.state = {
             heatmapVisible: true,
             heatmapPoints: [
-                { lat: 39.33, lng: -120.18 },
-                { lat: 30.3, lng: -120 }
+                { lat: 39.33, lng: -120.18, weight: 1 },
+                { lat: 32.3, lng: -115, weight: 5 }
             ]
         }
     }
@@ -51,6 +51,7 @@ class HeatMap extends Component {
 
     render() {
 
+        // sorry, but this key only works on my domain
         const apiKey = { key: 'AIzaSyAoAJ_mPrHFvnhimkLOBrFMSQqEwpkJRCk' }
         const heatMapData = {
             positions: this.state.heatmapPoints,
