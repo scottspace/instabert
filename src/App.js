@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Feed from './components/Feed';
+import HeatMap from './components/HeatMap';
+
 import {
   BrowserRouter as Router,
   Route
@@ -17,6 +19,7 @@ class App extends Component {
       <section className="App-main">
         <Router>
           <Route exact path={"/"} component={Feed} />
+          <Route exact path={"/map"} component={HeatMap} />
         </Router>
       </section>
     </div>;
