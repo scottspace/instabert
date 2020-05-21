@@ -35,10 +35,9 @@ a, a:visited {
   font-weight: bold;
 }
 .Post-senticon {
-  margin-top: 12px;
-  margin-right: 12px;
-  float: right;
   font-size: 18px;
+  position: absolute;
+  padding-left: 70%;
 }
 .Post-image-bg {
   background-color: #efefef;
