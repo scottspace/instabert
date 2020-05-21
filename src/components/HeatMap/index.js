@@ -1,6 +1,8 @@
 /* global google */
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
+import LoadingIndicator from '../LoadingIndicator'
+import { trackPromise } from 'react-promise-tracker'
 
 import './HeatMap.css'
 
@@ -24,6 +26,7 @@ function createMapOptions(maps) {
   }
 
 class HeatMap extends Component {
+
     static defaultProps = {
         center: {
             lat: 38.08
@@ -32,16 +35,40 @@ class HeatMap extends Component {
         zoom: 5
     }
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            heatmapVisible: true,
-            heatmapPoints: [
-                { lat: 39.33, lng: -120.18, weight: 1 },
-                { lat: 32.3, lng: -115, weight: 5 }
-            ]
-        }
-    }
+    state = {
+        articles: [],
+        query: '',
+        heatmapVisible: true,
+        heatmapPoints: []
+      };
+    
+    componentDidMount() {
+        var q = this.props.location.search;
+        var url = 'https://us-central1-octo-news.cloudfunctions.net/articles?n=500';
+        if (q.length > 0) {
+          url += q;
+        }    
+        this.setState({'query': q});
+        trackPromise(
+          fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+                for (var i=0; i < length(data); i++) {
+                    var article = data[i].z;
+                    var weight = article.z;
+                    var lat = article.lat;
+                    var lng = article.lng;
+                    weight = 3*(36-(3+Math.min(3,Math.max(-3,z))**2));
+                    this.setState({
+                        heatmapPoints: [...this.state.heatmapPoints, 
+                            { lat, lng, weight }]
+                    });
+                }
+              this.setState({ articles: data })
+            })
+            .catch(console.log)
+        )
+      };
 
     onMapClick({ x, y, lat, lng, event }) {
         if (!this.state.heatmapVisible) {
@@ -96,6 +123,7 @@ class HeatMap extends Component {
                     onClick={this.onMapClick.bind(this)}
                 >
                 </GoogleMapReact>
+                <LoadingIndicator />
                 <button className="toggleButton" onClick={this.toggleHeatMap.bind(this)}>Toggle heatmap</button>
             </div>
         )
