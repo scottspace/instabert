@@ -29,7 +29,7 @@ class Post extends Component {
     const emo = 3+Math.min(3,Math.max(-3,article.z));
     const emote = ['😭','🙁','😶','🙂','😍','🥳'];
     var smiley = emote[emo]; 
-    console.log(article.z,article.title);
+    console.log(article.z,article.score,article.title);
 
     return <article className="Post" ref="Post">
       <header>
