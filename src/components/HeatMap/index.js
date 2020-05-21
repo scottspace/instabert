@@ -75,6 +75,7 @@ class HeatMap extends Component {
             return
         }
         console.log("You clicked lat=",lat," lng=",lng);
+        window.open('/');
 
         this.setState({
             heatmapPoints: [...this.state.heatmapPoints, { lat, lng }]
