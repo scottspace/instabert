@@ -60,9 +60,12 @@ class HeatMap extends Component {
                     var weight = article.z;
                     var lat = article.lat;
                     var lng = article.lng;
-                    // weight 0 (very positive) to 100 (very negative)
+                    // weight -5 (very positive) to 5 (very negative)
                     weight = Math.min(5,Math.max(-5,-1*weight));
-                    weight = (weight+5)*10;
+                    if (weight <= 0) then {
+                        // 100 good articles = 1 bad article in intensity
+                        weight = 0.01;
+                    }
                     this.setState({
                         heatmapPoints: [...this.state.heatmapPoints, 
                             { lat, lng, weight }]
