@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/Header';
+//import Header from './components/Header';
 import Feed from './components/Feed';
 import HeatMap from './components/HeatMap';
 

@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
 import LoadingIndicator from '../LoadingIndicator'
 import { trackPromise } from 'react-promise-tracker'
+import renderToString from 'react-dom/server'
+import Tweet from '../Tweet';
 
 import './HeatMap.css'
 
@@ -58,8 +60,13 @@ class HeatMap extends Component {
             idx = 0;
         }
         this.setState({index: idx});
+        var article = this.state.articles[idx];
+        const point = new google.maps.LatLng(article.lat, article.lng);
+        var m = this._googleMap.map_;
+        var html = renderToString(<Tweet article={article} />);
+        m.panTo(point);
         console.log("We got you - index at "+idx);
-        console.log(this.state.articles[idx]);
+        console.log(html);
         const new_timer = setTimeout(() => {
             this.myTimer();
             }, 5000);
@@ -99,9 +106,9 @@ class HeatMap extends Component {
                     });
                 }
               this.setState({ articles: data })
-              this.setState({marker: new google.maps.Marker});
-              this.setState({infoWindow: new google.maps.InfoWindow});
-              this.setState({geocoder: new google.maps.Geocoder});
+              this.setState({marker: new google.maps.Marker()});
+              this.setState({infoWindow: new google.maps.InfoWindow()});
+              this.setState({geocoder: new google.maps.Geocoder()});
               this.setState({index: 0});
               this.myTimer();
             })
@@ -127,7 +134,7 @@ class HeatMap extends Component {
             marker.setMap(null);
             infoWindow.close();
             this.state.geocoder.geocode({'location': point}, function (results, status) {
-                if (status == 'OK') {
+                if (status === 'OK') {
                     var raw = results[0].formatted_address;
                     var parts = raw.split(',')
                     var city = parts[1].trim();

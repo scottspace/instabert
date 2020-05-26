@@ -1,0 +1,31 @@
+
+.tweet {
+    height: 100px;
+    width: 420px;
+  }
+  
+.tweet img {
+    width:  80px;
+    height: 80px;
+    margin: 8px;
+    float: left;
+    border: 1px solid grey;
+    filter: drop-shadow(3px 3px 3px grey);
+  }
+
+.tweet .title {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    width: 300px;
+    float: left;
+    margin-top: 10px;
+    overflow: hidden;
+  }
+  
+.tweet .topic {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    float: left;
+    margin-top: 10px;
+  }
+  
