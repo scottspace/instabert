@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Post from '../Post';
 import LoadingIndicator from '../LoadingIndicator';
 import { trackPromise } from 'react-promise-tracker';
+import "./Feed.css";
 
 class Feed extends Component {
 
@@ -32,6 +33,7 @@ class Feed extends Component {
     console.log("Feed object", this.props);
     return (
       <div>
+        <div className="feedTitle">Covid News Feed</div>
         {this.state.articles.map((article) => (
           <Post article={article} />
         ))}
