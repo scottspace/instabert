@@ -137,7 +137,7 @@ class HeatMap extends Component {
             return
         }
         console.log("You clicked lat=",lat," lng=",lng);
-        //window.open('/');
+
         // stop our animation
         if (this.state.timer) {
             clearTimeout(this.state.timer);
@@ -187,8 +187,6 @@ class HeatMap extends Component {
                 opacity: 0.6
             }
         }
-
-        console.log(this.state)
 
         return (
             <div style={{ height: '100vh', width: '100%' }}>
