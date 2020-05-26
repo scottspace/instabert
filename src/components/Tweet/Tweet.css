@@ -2,11 +2,12 @@
 .tweet {
     height: 100px;
     width: 420px;
+    overflow: hidden;
   }
-  
+
 .tweet img {
-    width:  80px;
-    height: 80px;
+    width:  100px;
+    height: 100px;
     margin: 8px;
     float: left;
     border: 1px solid grey;

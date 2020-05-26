@@ -50,34 +50,42 @@ class HeatMap extends Component {
         timer: false
       };
 
-    myTimer() {
-        if (this.state.timer) {
-            clearTimeout(this.state.timer);
-        }
+      nextArticle() {
         var idx = this.state.index;
         var m_idx = this.state.articles.length;
-        var marker = this.state.marker;
-        var infoWindow = this.state.infoWindow;
-        marker.setMap(null);
-        infoWindow.close();
         idx += 1;
         if (idx > m_idx) {
             idx = 0;
         }
-        var article = this.state.articles[idx];
-        const point = new google.maps.LatLng(article.lat, article.lng);
+        this.setState({index: idx});
+        return this.state.articles[idx];
+    };
+
+    doMark(lat,lng,html) {
         var m = this._googleMap.map_;
-        let html = ReactDOMServer.renderToString(<Tweet article={article} />);
+        var marker = this.state.marker;
+        var infoWindow = this.state.infoWindow;
+        const point = new google.maps.LatLng(lat, lng);
+        marker.setMap(null);
+        infoWindow.close();
         marker.setPosition(point);
         infoWindow.setPosition(point);
         marker.setMap(m);
         infoWindow.setContent(html);
         infoWindow.open(m, marker);
         m.panTo(point);
+    };
+
+    myTimer() {
+        if (this.state.timer) {
+            clearTimeout(this.state.timer);
+        }
+        let article = this.nextArticle();
+        let html = ReactDOMServer.renderToString(<Tweet article={article} />);
+        this.doMark(article.lat, article.lng, html);
         const new_timer = setTimeout(() => {
             this.myTimer();
-            }, 5000);
-        this.setState({index: idx});
+            }, 15000);
         this.setState({timer: new_timer});
     };
     
