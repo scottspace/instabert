@@ -41,7 +41,8 @@ class HeatMap extends Component {
         heatmapVisible: true,
         heatmapPoints: [],
         marker: false,
-        infoWindow: false
+        infoWindow: false,
+        geocoder: false
       };
     
     componentDidMount() {
@@ -77,8 +78,9 @@ class HeatMap extends Component {
                     });
                 }
               this.setState({ articles: data })
-              this.setState({marker: new google.maps.Marker()});
-              this.setState({infoWindow: new google.maps.InfoWindow()});
+              this.setState({marker: new google.maps.Marker});
+              this.setState({infoWindow: new google.maps.InfoWindow});
+              this.setState({geocoder: new google.maps.Geocoder});
             })
             .catch(console.log)
         )
@@ -96,18 +98,24 @@ class HeatMap extends Component {
         })
         if (this._googleMap !== undefined) {
             var m = this._googleMap.map_;
-            var html = "<div><b>Hi</b> there!</div>";
             const point = new google.maps.LatLng(lat, lng);
             this.state.marker.setMap(null);
             this.state.infoWindow.close();
-            m.panTo(point);
-            this.state.marker.setPosition(point);
-            this.state.infoWindow.setPosition(point);
-            this.state.marker.setMap(m);
-            this.state.infoWindow.setContent(html);
-            this.state.infoWindow.open(m, this.state.marker);
-
-           // this._googleMap.heatmap.data.push(point)
+            this.state.geocoder.geocode({'location': point}, function (results, status) {
+                if (status == 'OK') {
+                    var html = results[0].formatted_address;
+                    this.state.marker.setPosition(point);
+                    this.state.infoWindow.setPosition(point);
+                    this.state.marker.setMap(m);
+                    this.state.infoWindow.setContent(html);
+                    this.state.infoWindow.open(m, this.state.marker);
+                    m.panTo(point);
+                    console.log(results);
+                }
+                else { 
+                    console.log(status);
+                }
+            });
         }
     }
 
