@@ -27,6 +27,7 @@ class Post extends Component {
     const caption = article.title + " " + article.snippet;
     const topic = article.topic_text;
     const emo = 3+Math.min(3,Math.max(-3,article.z));
+    const city = article.city.replace(' ','+');
     const emote = ['😭','😢','🙁','😐','🙂','😍','🥳'];
     var smiley = emote[emo]; 
 
@@ -36,7 +37,9 @@ class Post extends Component {
           <div className="Post-user-avatar">
             <img src={avatar} alt={nickname} />
           </div>
-          <div className="Post-senticon"><Emojis size={24}>{smiley}</Emojis></div>
+          <div className="Post-senticon">
+              <Emojis size={24}>{smiley}</Emojis>
+          </div>
           <div className="Post-user-nickname">
           <a href={`/?w=${article.who}`}><span>{article.who}</span></a>
           </div>
@@ -49,8 +52,8 @@ class Post extends Component {
           </div>
         </div>
       </a>
-      <div className="Post-topic">
-        From <a href={`/?t=${article.topic}`}>"{topic}"</a>
+      <div className="Post-topic">From <a href={`/?t=${article.topic}`}>"{topic}"</a>
+      in <a href={`/map?city=${city}`}>{article.city}</a>
       </div>
       <div className="Post-caption">
         <strong>{nickname} </strong>{caption}

@@ -44,10 +44,12 @@ class HeatMap extends Component {
     
     componentDidMount() {
         var q = this.props.location.search;
-        var url = 'https://us-central1-octo-news.cloudfunctions.net/articles?n=500';
+        var url = 'https://us-central1-octo-news.cloudfunctions.net/articles'
+        var m = '?m=all'
         if (q.length > 0) {
-          url += q;
-        }    
+            m = q;
+        }  
+        url += m
         this.setState({'query': q});
         trackPromise(
           fetch(url)
