@@ -52,14 +52,14 @@ class HeatMap extends Component {
             clearTimeout(this.state.timer);
         }
         var idx = this.state.index;
-        var m_idx = len(this.state.articles);
+        var m_idx = this.state.articles.length;
         idx += 1;
         if (idx > m_idx) {
             idx = 0;
         }
         this.setState({index: idx});
         console.log("We got you - index at "+idx);
-        console.log(this.state.articles[index]);
+        console.log(this.state.articles[idx]);
         const new_timer = setTimeout(() => {
             this.myTimer();
             }, 5000);
