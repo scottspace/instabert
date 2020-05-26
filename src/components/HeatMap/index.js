@@ -148,6 +148,7 @@ class HeatMap extends Component {
         })
         if (this._googleMap !== undefined) {
             var m = this._googleMap.map_;
+            const point = new google.maps.LatLng(lat, lng);
             this.state.geocoder.geocode({'location': point}, function (results, status) {
                 if (status === 'OK') {
                     var raw = results[0].formatted_address;
