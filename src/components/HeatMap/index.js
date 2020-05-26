@@ -61,10 +61,10 @@ class HeatMap extends Component {
         return this.state.articles[idx];
     };
 
-    doMark(lat,lng,html) {
-        var m = this._googleMap.map_;
-        var marker = this.state.marker;
-        var infoWindow = this.state.infoWindow;
+    doMark(heat,lat,lng,html) {
+        var m = heat._googleMap.map_;
+        var marker = heat.state.marker;
+        var infoWindow = heat.state.infoWindow;
         const point = new google.maps.LatLng(lat, lng);
         marker.setMap(null);
         infoWindow.close();
@@ -82,10 +82,10 @@ class HeatMap extends Component {
         }
         let article = this.nextArticle();
         let html = ReactDOMServer.renderToString(<Tweet article={article} />);
-        this.doMark(article.lat, article.lng, html);
+        this.doMark(this,article.lat, article.lng, html);
         const new_timer = setTimeout(() => {
             this.myTimer();
-            }, 10000);
+            }, 8000);
         this.setState({timer: new_timer});
     };
     
@@ -149,6 +149,7 @@ class HeatMap extends Component {
         if (this._googleMap !== undefined) {
             const point = new google.maps.LatLng(lat, lng);
             var mark = this.doMark;
+            var src = this;
             this.state.geocoder.geocode({'location': point}, function (results, status) {
                 if (status === 'OK') {
                     var raw = results[0].formatted_address;
@@ -156,7 +157,7 @@ class HeatMap extends Component {
                     var city = parts[1].trim();
                     var city2 = city.replace(' ','+');
                     var html = "See news about <a href=\"/?c="+city2+"\">"+city+"</a>";
-                    mark(lat, lng, html);
+                    mark(src, lat, lng, html);
                    // console.log(results);
                 }
                 else { 
