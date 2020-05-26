@@ -53,8 +53,6 @@ class HeatMap extends Component {
         }  
         url += m
         this.setState({'query': q});
-        this.setState({'marker': new google.maps.Marker()});
-        this.setState({'infoWindow': new google.maps.InfoWindow()});
         trackPromise(
           fetch(url)
             .then(res => res.json())
@@ -79,6 +77,8 @@ class HeatMap extends Component {
                     });
                 }
               this.setState({ articles: data })
+              this.setState({marker: new google.maps.Marker()});
+              this.setState({infoWindow: new google.maps.InfoWindow()});
             })
             .catch(console.log)
         )
