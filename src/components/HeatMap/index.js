@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
 import LoadingIndicator from '../LoadingIndicator'
 import { trackPromise } from 'react-promise-tracker'
-import renderToString from 'react-dom/server'
+//import renderToString from 'react-dom/server'
 import Tweet from '../Tweet';
 
 import './HeatMap.css'
@@ -49,7 +49,7 @@ class HeatMap extends Component {
         timer: false
       };
 
-    myTimer = () => {
+    myTimer() {
         if (this.state.timer) {
             clearTimeout(this.state.timer);
         }
@@ -63,7 +63,7 @@ class HeatMap extends Component {
         var article = this.state.articles[idx];
         const point = new google.maps.LatLng(article.lat, article.lng);
         var m = this._googleMap.map_;
-        var html = renderToString(<Tweet article={article} />);
+        var html = (<Tweet article={article} />);
         m.panTo(point);
         console.log("We got you - index at "+idx);
         console.log(html);
