@@ -105,7 +105,11 @@ class HeatMap extends Component {
             infoWindow.close();
             this.state.geocoder.geocode({'location': point}, function (results, status) {
                 if (status == 'OK') {
-                    var html = results[0].formatted_address;
+                    var raw = results[0].formatted_address;
+                    var parts = raw.split(',')
+                    var city = parts[1].strip();
+                    var city2 = city.replace(' ','+');
+                    var html = "See news about <a href=\"/?c="+city2+"\">"+city+"</a>";
                     marker.setPosition(point);
                     infoWindow.setPosition(point);
                     marker.setMap(m);
