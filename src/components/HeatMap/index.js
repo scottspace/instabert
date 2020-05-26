@@ -42,8 +42,29 @@ class HeatMap extends Component {
         heatmapPoints: [],
         marker: false,
         infoWindow: false,
-        geocoder: false
+        geocoder: false,
+        index: 0, 
+        timer: false;
       };
+
+    myTimer() {
+        if (this.state.timer) {
+            clearTimeout(this.state.timer);
+        }
+        var idx = this.state.index;
+        var m_idx = len(this.state.articles);
+        idx += 1;
+        if (idx > m_idx) {
+            idx = 0;
+        }
+        this.setState({index: idx});
+        console.log("We got you - index at "+idx);
+        console.log(this.state.articles[index]);
+        const new_timer = setTimeout(() => {
+            this.myTimer();
+            }, 5000);
+        this.setState({timer: new_timer});
+    };
     
     componentDidMount() {
         var q = this.props.location.search;
@@ -81,6 +102,8 @@ class HeatMap extends Component {
               this.setState({marker: new google.maps.Marker});
               this.setState({infoWindow: new google.maps.InfoWindow});
               this.setState({geocoder: new google.maps.Geocoder});
+              this.setState({index: 0});
+              this.myTimer();
             })
             .catch(console.log)
         )
