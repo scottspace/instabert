@@ -99,7 +99,7 @@ class HeatMap extends Component {
         if (this._googleMap !== undefined) {
             var m = this._googleMap.map_;
             var marker = this.state.marker;
-            var infoWindow = tihs.state.infoWindow;
+            var infoWindow = this.state.infoWindow;
             const point = new google.maps.LatLng(lat, lng);
             marker.setMap(null);
             infoWindow.close();
