@@ -147,7 +147,6 @@ class HeatMap extends Component {
             heatmapPoints: [...this.state.heatmapPoints, { lat, lng }]
         })
         if (this._googleMap !== undefined) {
-            var m = this._googleMap.map_;
             const point = new google.maps.LatLng(lat, lng);
             this.state.geocoder.geocode({'location': point}, function (results, status) {
                 if (status === 'OK') {
@@ -207,6 +206,7 @@ class HeatMap extends Component {
                 <LoadingIndicator />
                 <div className="mapTitle">Covid News Explorer</div>
                 <button className="toggleButton" onClick={this.toggleHeatMap.bind(this)}>Toggle heatmap</button>
+                <button className="dashboard" onClick={window.open("https://stateofcacovid19.cloud.looker.com/dashboards/22")}>Dashboard</button>
             </div>
         )
     }

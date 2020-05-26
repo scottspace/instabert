@@ -5,6 +5,13 @@
 	z-index: 5;
 }
 
+.dashboard {
+	position: absolute;
+	top: 64px;
+	left: 140px;
+	z-index: 5;
+}
+
 .mapTitle {
 	position: absolute;
 	top: 32px;
