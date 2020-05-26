@@ -39,7 +39,9 @@ class HeatMap extends Component {
         articles: [],
         query: '',
         heatmapVisible: true,
-        heatmapPoints: []
+        heatmapPoints: [],
+        marker: false,
+        infoWindow: false
       };
     
     componentDidMount() {
@@ -51,6 +53,8 @@ class HeatMap extends Component {
         }  
         url += m
         this.setState({'query': q});
+        this.setState({'marker': new google.maps.Marker()});
+        this.setState({'infoWindow': new google.maps.InfoWindow()});
         trackPromise(
           fetch(url)
             .then(res => res.json())
@@ -91,9 +95,18 @@ class HeatMap extends Component {
             heatmapPoints: [...this.state.heatmapPoints, { lat, lng }]
         })
         if (this._googleMap !== undefined) {
-            const point = new google.maps.LatLng(lat, lng)
-            console.log(this._googleMap);
-            this._googleMap.map_.panTo(point);
+            var m = this._googleMap.map_;
+            var html = "<div><b>Hi</b> there!</div>";
+            const point = new google.maps.LatLng(lat, lng);
+            this.state.marker.setMap(null);
+            this.state.infoWindow.close();
+            m.panTo(point);
+            this.state.marker.setPosition(point);
+            this.state.infoWindow.setPosition(point);
+            this.state.marker.setMap(m);
+            this.state.infoWindow.setContent(html);
+            this.state.infoWindow.open(m, this.state.marker);
+
            // this._googleMap.heatmap.data.push(point)
         }
     }
