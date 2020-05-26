@@ -13,7 +13,6 @@ from google.cloud import bigquery
 import pandas as pd 
 import flask
 
-
 def hello_world(request):
     """Responds to any HTTP request.
     Args:
@@ -29,6 +28,8 @@ def hello_world(request):
         response = flask.jsonify(get_who(request.args.get('w')))
     elif request.args and 'm' in request.args:
         response = flask.jsonify(get_map(request.args.get('m')))
+    elif request.args and 'c' in request.args:
+        response = flask.jsonify(get_articles(request.args.get('c')))
     else:
         response = flask.jsonify(get_articles())
     response.headers.set('Access-Control-Allow-Origin', '*')
@@ -36,7 +37,6 @@ def hello_world(request):
     return response
 
 def with_a(city = ''):
-    city = '%'+city+'%'
     q = """
 with a as 
 (SELECT *
@@ -74,8 +74,9 @@ def get_who(w):
    rows_df = query_job.result().to_dataframe() # Waits for query to finish
    return rows_df.to_dict(orient='records')
 
-def get_articles():
+def get_articles(city=''):
    # BQ Query to get top 50 articles
+   QUERY = with_a(city)
    QUERY += "SELECT a.*,b.name as topic_text from a inner join "
    QUERY += "`octo-news.gdelt_sa.themes` as b on a.topic=b.index order by index limit 50"
    bq_client = bigquery.Client()
@@ -84,13 +85,13 @@ def get_articles():
    return rows_df.to_dict(orient='records')
 
 def get_map(m):
-   # BQ Query to get top 500 articles in city m, 'all' for all
+   # BQ Query to get top 250 articles in city m, 'all' for all
    if m.lower() == 'all':
        m = ''
-   QUERY = with_a()
+   QUERY = with_a(m)
    QUERY += "SELECT a.*,b.name as topic_text from a inner join "
    QUERY += "`octo-news.gdelt_sa.themes` as b on a.topic=b.index "
-   QUERY += "where city like '%"+m+"%' order by index limit 500"
+   QUERY += "order by index limit 250"
    bq_client = bigquery.Client()
    query_job = bq_client.query(QUERY) # API request
    rows_df = query_job.result().to_dataframe() # Waits for query to finish

@@ -8,4 +8,5 @@
     vertical-align: center;
     justifyContent: 'center';
     alignItems: 'center';
+    z-index: 5;
 }

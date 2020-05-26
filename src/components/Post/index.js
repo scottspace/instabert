@@ -53,7 +53,7 @@ class Post extends Component {
         </div>
       </a>
       <div className="Post-topic">From <a href={`/?t=${article.topic}`}>"{topic}"</a>
-      in <a href={`/map?city=${city}`}>{article.city}</a>
+      <a href={`/map?city=${city}`}> in {article.city}</a>
       </div>
       <div className="Post-caption">
         <strong>{nickname} </strong>{caption}

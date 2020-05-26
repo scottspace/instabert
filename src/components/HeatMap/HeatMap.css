@@ -1,6 +1,16 @@
 .toggleButton {
 	position: absolute;
+	top: 64px;
+	left: 32px;
+	z-index: 5;
+}
+
+.mapTitle {
+	position: absolute;
 	top: 32px;
 	left: 32px;
 	z-index: 5;
+	font-size: 24px;
+	color: black;
+	font: Arial, sans-serif, bold;
 }

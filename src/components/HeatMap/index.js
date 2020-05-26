@@ -127,6 +127,7 @@ class HeatMap extends Component {
                 >
                 </GoogleMapReact>
                 <LoadingIndicator />
+                <div className="mapTitle">Covid News Explorer</div>
                 <button className="toggleButton" onClick={this.toggleHeatMap.bind(this)}>Toggle heatmap</button>
             </div>
         )
