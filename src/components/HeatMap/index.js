@@ -98,17 +98,19 @@ class HeatMap extends Component {
         })
         if (this._googleMap !== undefined) {
             var m = this._googleMap.map_;
+            var marker = this.state.marker;
+            var infoWindow = tihs.state.infoWindow;
             const point = new google.maps.LatLng(lat, lng);
-            this.state.marker.setMap(null);
-            this.state.infoWindow.close();
+            marker.setMap(null);
+            infoWindow.close();
             this.state.geocoder.geocode({'location': point}, function (results, status) {
                 if (status == 'OK') {
                     var html = results[0].formatted_address;
-                    this.state.marker.setPosition(point);
-                    this.state.infoWindow.setPosition(point);
-                    this.state.marker.setMap(m);
-                    this.state.infoWindow.setContent(html);
-                    this.state.infoWindow.open(m, this.state.marker);
+                    marker.setPosition(point);
+                    infoWindow.setPosition(point);
+                    marker.setMap(m);
+                    infoWindow.setContent(html);
+                    infoWindow.open(m, marker);
                     m.panTo(point);
                     console.log(results);
                 }
