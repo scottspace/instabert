@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
 import LoadingIndicator from '../LoadingIndicator'
 import { trackPromise } from 'react-promise-tracker'
-//import renderToString from 'react-dom/server'
+import ReactDOMServer from 'react-dom/server';
+
 import Tweet from '../Tweet';
 
 import './HeatMap.css'
@@ -55,21 +56,28 @@ class HeatMap extends Component {
         }
         var idx = this.state.index;
         var m_idx = this.state.articles.length;
+        var marker = this.state.marker;
+        var infoWindow = this.state.infoWindow;
+        marker.setMap(null);
+        infoWindow.close();
         idx += 1;
         if (idx > m_idx) {
             idx = 0;
         }
-        this.setState({index: idx});
         var article = this.state.articles[idx];
         const point = new google.maps.LatLng(article.lat, article.lng);
         var m = this._googleMap.map_;
-        var html = (<Tweet article={article} />);
+        let html = ReactDOMServer.renderToString(<Tweet article={article} />);
+        marker.setPosition(point);
+        infoWindow.setPosition(point);
+        marker.setMap(m);
+        infoWindow.setContent(html);
+        infoWindow.open(m, marker);
         m.panTo(point);
-        console.log("We got you - index at "+idx);
-        console.log(html);
         const new_timer = setTimeout(() => {
             this.myTimer();
             }, 5000);
+        this.setState({index: idx});
         this.setState({timer: new_timer});
     };
     
@@ -122,7 +130,11 @@ class HeatMap extends Component {
         }
         console.log("You clicked lat=",lat," lng=",lng);
         //window.open('/');
-
+        // stop our animation
+        if (this.state.timer) {
+            clearTimeout(this.state.timer);
+            this.setState({timer: false});
+        }
         this.setState({
             heatmapPoints: [...this.state.heatmapPoints, { lat, lng }]
         })
