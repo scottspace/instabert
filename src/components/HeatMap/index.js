@@ -107,7 +107,7 @@ class HeatMap extends Component {
                 if (status == 'OK') {
                     var raw = results[0].formatted_address;
                     var parts = raw.split(',')
-                    var city = parts[1].strip();
+                    var city = parts[1].trim();
                     var city2 = city.replace(' ','+');
                     var html = "See news about <a href=\"/?c="+city2+"\">"+city+"</a>";
                     marker.setPosition(point);
