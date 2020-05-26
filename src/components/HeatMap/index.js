@@ -66,6 +66,9 @@ class HeatMap extends Component {
                         // 100 good articles = 1 bad article in intensity
                         weight = 0.01;
                     }
+                    else {
+                        weight = weight*10;
+                    }
                     this.setState({
                         heatmapPoints: [...this.state.heatmapPoints, 
                             { lat, lng, weight }]
@@ -89,7 +92,8 @@ class HeatMap extends Component {
         })
         if (this._googleMap !== undefined) {
             const point = new google.maps.LatLng(lat, lng)
-            this._googleMap.panTo(point);
+            console.log(this._googleMap);
+            this._googleMap.map_.panTo(point);
            // this._googleMap.heatmap.data.push(point)
         }
     }
