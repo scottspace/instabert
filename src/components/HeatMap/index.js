@@ -82,14 +82,15 @@ class HeatMap extends Component {
             return
         }
         console.log("You clicked lat=",lat," lng=",lng);
-        window.open('/');
+        //window.open('/');
 
         this.setState({
             heatmapPoints: [...this.state.heatmapPoints, { lat, lng }]
         })
         if (this._googleMap !== undefined) {
             const point = new google.maps.LatLng(lat, lng)
-            this._googleMap.heatmap.data.push(point)
+            this._googleMap.panTo(point);
+           // this._googleMap.heatmap.data.push(point)
         }
     }
 
