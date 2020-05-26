@@ -148,6 +148,7 @@ class HeatMap extends Component {
         })
         if (this._googleMap !== undefined) {
             const point = new google.maps.LatLng(lat, lng);
+            var mark = this.doMark;
             this.state.geocoder.geocode({'location': point}, function (results, status) {
                 if (status === 'OK') {
                     var raw = results[0].formatted_address;
@@ -155,7 +156,7 @@ class HeatMap extends Component {
                     var city = parts[1].trim();
                     var city2 = city.replace(' ','+');
                     var html = "See news about <a href=\"/?c="+city2+"\">"+city+"</a>";
-                    this.doMark(lat, lng, html);
+                    mark(lat, lng, html);
                    // console.log(results);
                 }
                 else { 
