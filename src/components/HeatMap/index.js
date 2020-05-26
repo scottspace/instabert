@@ -44,7 +44,7 @@ class HeatMap extends Component {
         infoWindow: false,
         geocoder: false,
         index: 0, 
-        timer: false;
+        timer: false
       };
 
     myTimer() {
