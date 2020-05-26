@@ -33,7 +33,6 @@ class Feed extends Component {
     console.log("Feed object", this.props);
     return (
       <div>
-        <div className="feedTitle">Covid News Feed</div>
         {this.state.articles.map((article) => (
           <Post article={article} />
         ))}

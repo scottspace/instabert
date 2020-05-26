@@ -1,7 +1,7 @@
 .feedTitle {
-	position: absolute;
+	position: absolute fixed;
 	top: 32px;
-	left: 32px;
+	left: 8px;
 	z-index: 5;
 	font-size: 24px;
 	color: black;

@@ -49,7 +49,7 @@ class HeatMap extends Component {
         timer: false
       };
 
-    myTimer() {
+    myTimer = () => {
         if (this.state.timer) {
             clearTimeout(this.state.timer);
         }
