@@ -204,7 +204,9 @@ class HeatMap extends Component {
                 <LoadingIndicator />
                 <div className="mapTitle">Covid News Explorer</div>
                 <button className="toggleButton" onClick={this.toggleHeatMap.bind(this)}>Toggle heatmap</button>
-                <button className="dashboard" onClick={window.open("https://stateofcacovid19.cloud.looker.com/dashboards/22")}>Dashboard</button>
+                <div className="dashboard">
+                    <a href="https://stateofcacovid19.cloud.looker.com/dashboards/22">Dashboard</a>
+                </div>
             </div>
         )
     }
