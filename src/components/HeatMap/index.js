@@ -62,7 +62,7 @@ class HeatMap extends Component {
                     var lng = article.lng;
                     // weight -5 (very positive) to 5 (very negative)
                     weight = Math.min(5,Math.max(-5,-1*weight));
-                    if (weight <= 0) then {
+                    if (weight <= 0) {
                         // 100 good articles = 1 bad article in intensity
                         weight = 0.01;
                     }
